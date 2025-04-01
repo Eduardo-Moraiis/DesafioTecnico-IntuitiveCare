@@ -14,6 +14,10 @@ CREATE DATABASE intuitivecare
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;
 */
+
+DROP TABLE demonstracoes_contabeis;
+DROP TABLE operadoras_de_plano_de_saude_ativas;
+
 CREATE TABLE operadoras_de_plano_de_saude_ativas(
     registro_ans VARCHAR(10) PRIMARY KEY,
     cnpj VARCHAR(14) NOT NULL,
@@ -54,3 +58,8 @@ COPY demonstracoes_contabeis(data,reg_ans,cd_conta_contabil,descricao,vl_saldo_i
 COPY demonstracoes_contabeis(data,reg_ans,cd_conta_contabil,descricao,vl_saldo_inicial,vl_saldo_final) FROM 'E:/Desafio-IntuitiveCare/TesteBancoDeDados/2024/2T2024.csv' WITH DELIMITER ';' CSV HEADER;
 COPY demonstracoes_contabeis(data,reg_ans,cd_conta_contabil,descricao,vl_saldo_inicial,vl_saldo_final) FROM 'E:/Desafio-IntuitiveCare/TesteBancoDeDados/2024/3T2024.csv' WITH DELIMITER ';' CSV HEADER;
 COPY demonstracoes_contabeis(data,reg_ans,cd_conta_contabil,descricao,vl_saldo_inicial,vl_saldo_final) FROM 'E:/Desafio-IntuitiveCare/TesteBancoDeDados/2024/4T2024.csv' WITH DELIMITER ';' CSV HEADER;
+
+COPY demonstracoes_contabeis(data,reg_ans,cd_conta_contabil,descricao,vl_saldo_inicial,vl_saldo_final) FROM 'E:/Desafio-IntuitiveCare/TesteBancoDeDados/2023/1T2023.csv' WITH DELIMITER ';' CSV HEADER;
+COPY demonstracoes_contabeis(data,reg_ans,cd_conta_contabil,descricao,vl_saldo_inicial,vl_saldo_final) FROM 'E:/Desafio-IntuitiveCare/TesteBancoDeDados/2023/2T2023.csv' WITH DELIMITER ';' CSV HEADER;
+COPY demonstracoes_contabeis(data,reg_ans,cd_conta_contabil,descricao,vl_saldo_inicial,vl_saldo_final) FROM 'E:/Desafio-IntuitiveCare/TesteBancoDeDados/2023/3T2023.csv' WITH DELIMITER ';' CSV HEADER;
+COPY demonstracoes_contabeis(data,reg_ans,cd_conta_contabil,descricao,vl_saldo_inicial,vl_saldo_final) FROM 'E:/Desafio-IntuitiveCare/TesteBancoDeDados/2023/4T2023.csv' WITH DELIMITER ';' CSV HEADER;
