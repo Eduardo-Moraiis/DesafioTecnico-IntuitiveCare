@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "a87a1866-532c-495f-8687-f71a20316a11",
+		"name": "Collection_IntuitiveCare",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43665362"
+	},
+	"item": [
+		{
+			"name": "default get",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/testapi",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"testapi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query name get",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/testapi?q=Amil",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"testapi"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Amil"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query limit get",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/testapi?limit=40",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"testapi"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "40"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query begin and limit get",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/testapi?limit=50&begin=30",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"testapi"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "50"
+						},
+						{
+							"key": "begin",
+							"value": "30"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
