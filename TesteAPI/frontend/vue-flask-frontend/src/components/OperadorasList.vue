@@ -65,10 +65,10 @@
 </template>
 
 <script setup>
-// Dados fixos (serão substituídos pela sua API via Postman)
+
 import { ref, onMounted, watch } from 'vue'
 
-// Dados da aplicação
+
 const data = ref({ count: 0, resultas: [] })
 const loading = ref(false)
 const error = ref(null)
@@ -76,7 +76,7 @@ const selectedEndpoint = ref(null)
 const endpoints = ref([])
 const currentEndpointIndex = ref(0)
 
-// Importação do JSON da collection
+
 import postmanCollection from '../assets/Collection_IntuitiveCare.postman_collection.json'
 
 // Processa a collection ao montar o componente
@@ -93,7 +93,7 @@ function processPostmanCollection() {
       queries: item.request.url.query || []
     }))
 
-    // Inicia o carregamento automático
+
     if (endpoints.value.length > 0) {
       selectedEndpoint.value = endpoints.value[0]
       startAutoFetch()
@@ -104,11 +104,10 @@ function processPostmanCollection() {
   }
 }
 
-// Carrega dados automaticamente para cada endpoint
 const startAutoFetch = () => {
   fetchData()
 
-  // Configura intervalo para mudar de endpoint (opcional)
+
   const interval = setInterval(() => {
     currentEndpointIndex.value = (currentEndpointIndex.value + 1) % endpoints.value.length
     selectedEndpoint.value = endpoints.value[currentEndpointIndex.value]
@@ -137,11 +136,9 @@ async function fetchData() {
   }
 }
 
-// Observa mudanças no endpoint selecionado
 watch(selectedEndpoint, () => {
   fetchData()
 })
-// Funções de formatação
 const formatCNPJ = (cnpj) => {
   const cnpjStr = cnpj.toString().padStart(14, '0')
   return `${cnpjStr.substring(0, 2)}.${cnpjStr.substring(2, 5)}.${cnpjStr.substring(5, 8)}/${cnpjStr.substring(8, 12)}-${cnpjStr.substring(12)}`
@@ -164,7 +161,6 @@ const formatData = (dataStr) => {
 </script>
 
 <style scoped>
-/* Cabeçalho */
 .head {
   background-color: rgba(52, 126, 188, 0.9);
   border-radius: 8px;
@@ -188,7 +184,7 @@ const formatData = (dataStr) => {
   font-weight: 500;
 }
 
-/* Container principal */
+
 .operadoras-view {
   width: 100%;
   max-width: 1200px;
@@ -197,7 +193,7 @@ const formatData = (dataStr) => {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Lista de operadoras */
+
 .operadoras-list {
   display: flex;
   flex-direction: column;
@@ -205,7 +201,7 @@ const formatData = (dataStr) => {
   width: 100%;
 }
 
-/* Card de cada operadora */
+
 .operadora-card {
   background: #fff;
   border-radius: 10px;
@@ -222,14 +218,14 @@ const formatData = (dataStr) => {
   border-bottom: 2px solid #f0f0f0;
 }
 
-/* Informações em grid */
+
 .operadora-info {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 
-/* Linhas de informação */
+
 .info-row {
   display: flex;
   margin-bottom: 12px;
@@ -253,7 +249,7 @@ span{
   line-height: 1.5;
 }
 
-/* Responsividade */
+
 @media (max-width: 768px) {
   .operadora-info {
     grid-template-columns: 1fr;

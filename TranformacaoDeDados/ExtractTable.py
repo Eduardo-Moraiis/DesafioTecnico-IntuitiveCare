@@ -1,4 +1,3 @@
-import csv
 from pathlib import Path
 
 import pandas as pd
@@ -50,7 +49,7 @@ def cleanAndTransformData(df):
 
     return df
 
-def saveToZip(df, outputFileName, myName, outputZip):
+def saveToZip(df, myName, outputZip):
     csvBuffer = StringIO()
     df.to_csv(csvBuffer, index=False, encoding='utf-8-sig')
     csvContent = csvBuffer.getvalue()
@@ -75,7 +74,7 @@ def extractTable():
         df = cleanAndTransformData(df)
 
         print("Salvando zip")
-        zipFile = saveToZip(df, "procedimentos_saude.csv", myName, outputZip)
+        zipFile = saveToZip(df, myName, outputZip)
         print(f"Arquivo {zipFile} criado")
     else:
         print("nenhum dado foi extraido")

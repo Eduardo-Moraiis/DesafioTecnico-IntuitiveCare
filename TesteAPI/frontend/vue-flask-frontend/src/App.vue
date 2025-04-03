@@ -18,7 +18,6 @@ import OperadorasView from './components/OperadorasList.vue'
   overflow-x: hidden;
 }
 
-/* Remove margens padrão do body */
 body {
  margin: 0;
   width: 100vw;

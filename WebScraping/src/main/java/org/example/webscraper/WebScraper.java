@@ -4,7 +4,7 @@ import org.example.downloader.Downloader;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.example.compactor.Compactor;
+
 
 public class WebScraper {
     public static void WebScraperDownloader(String pageUrl, String pathDownloadFile, String[] fileToDownload){
@@ -13,7 +13,7 @@ public class WebScraper {
             Document document = Jsoup.connect(pageUrl).get();
 
             for(String file : fileToDownload){
-            Element linkElement = document.selectFirst("a:contains(" + file + ")");
+                Element linkElement = document.selectFirst("a:contains(" + file + ")");
 
                 if(linkElement != null){
                     String fileUrl = linkElement.attr("href");
