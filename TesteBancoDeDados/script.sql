@@ -15,6 +15,16 @@ CREATE DATABASE intuitivecare
     IS_TEMPLATE = False;
 */
 
+/*
+Versão do postgres: PostgreSQL 17.4
+
+Foi utilizado o pgAdmin4 para criar o banco de dados
+Creio que seja necessário ajustar o caminho dos arquivos csv,
+pois não consegui localiza-los com um caminho relativo
+apenas através do caminho absoluto.
+*/
+
+
 CREATE TABLE operadoras_de_plano_de_saude_ativas(
     registro_ans VARCHAR(10) PRIMARY KEY,
     cnpj VARCHAR(14) NOT NULL,
@@ -38,14 +48,15 @@ CREATE TABLE operadoras_de_plano_de_saude_ativas(
     data_registro_ans DATE
 );
 
+
 CREATE TABLE demonstracoes_contabeis(
 	id SERIAL PRIMARY KEY,
-	data DATE,
-	reg_ans VARCHAR(10),
-	cd_conta_contabil VARCHAR(9),
-	descricao VARCHAR(255),
-	vl_saldo_inicial VARCHAR(15),
-	vl_saldo_final VARCHAR(15)
+	data DATE NOT NULL,
+	reg_ans VARCHAR(10) NOT NULL,
+	cd_conta_contabil VARCHAR(9) NOT NULL,
+	descricao VARCHAR(255) NOT NULL,
+	vl_saldo_inicial VARCHAR(15) NOT NULL,
+	vl_saldo_final VARCHAR(15) NOT NULL
 );
 
 
@@ -67,6 +78,7 @@ SELECT A.razao_social, B.total_gastos FROM operadoras_de_plano_de_saude_ativas A
 	(SELECT reg_ans, SUM(CAST(REPLACE(vl_saldo_final, ',', '.') AS DECIMAL(15,2))) AS total_gastos FROM demonstracoes_contabeis 
 		WHERE data = '2024-10-01' AND descricao = 'EVENTOS/ SINISTROS CONHECIDOS OU AVISADOS  DE ASSISTÊNCIA A SAÚDE MEDICO HOSPITALAR ' 
 		GROUP BY reg_ans ORDER BY total_gastos DESC LIMIT 10) B ON A.registro_ans = B.reg_ans ORDER BY B.total_gastos DESC;
+
 
 SELECT A.razao_social, B.total_gastos FROM operadoras_de_plano_de_saude_ativas A JOIN 
 	(SELECT reg_ans, SUM(CAST(REPLACE(vl_saldo_final, ',', '.') AS DECIMAL(15,2))) AS total_gastos FROM demonstracoes_contabeis 
